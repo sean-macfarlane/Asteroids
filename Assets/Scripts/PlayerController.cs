@@ -14,12 +14,13 @@ public class PlayerController : MonoBehaviour
     public GameObject lifePrefab;   // Life object
     public int lives;       // The number of lives a Player starts with
     public string startSceneName;   //  Name of Start Scene
+    public GameObject explosionPrefab;
 
     GameController _game; //Reference to the GameController
     Vector2 _lifePositon;    // Position of the previous life object instatiated
     GameObject[] _lifePrefabs;    //The Sprites for the Lives
     int _livesCount;        // The current amount of lives a Player has
-   
+
     // Use this for initialization
     void Start()
     {
@@ -34,7 +35,7 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                _lifePositon.x += 1f;
+                _lifePositon.x += 0.7f;
             }
             life.transform.position = _lifePositon;
             _lifePrefabs[i] = life;
@@ -49,6 +50,7 @@ public class PlayerController : MonoBehaviour
         {
             GetComponent<Rigidbody2D>().AddForce(transform.up * speed * Time.deltaTime);
         }
+
         // Rotate Left
         if (Input.GetKey(KeyCode.LeftArrow))
         {
@@ -76,16 +78,34 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
             if (_livesCount == 0)
             {
-                GameObject gameObject = GameObject.FindGameObjectWithTag("GameController");
-                _game = gameObject.GetComponent<GameController>();
-                _game.UpdateHighscore();
-                SceneManager.LoadScene(startSceneName);
+                AudioSource[] audios = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+                foreach (AudioSource aud in audios)
+                    aud.Stop();
+
+                gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+                GameObject ex = GameObject.Instantiate(explosionPrefab) as GameObject;
+                ex.transform.position = transform.position;
+                StartCoroutine(Explosion());
+
             }
             else
             {
                 _livesCount--;
                 Destroy(_lifePrefabs[_livesCount]);
 
+                if (_livesCount == 2)
+                {
+                    GetComponents<AudioSource>()[0].Play();
+                }
+                else if (_livesCount == 1)
+                {
+                    GetComponents<AudioSource>()[1].Play();
+                }
+                else if (_livesCount == 0)
+                {
+                    GetComponents<AudioSource>()[2].Play();
+                }
                 StartCoroutine(Flash(0.2f, 0.05f));
             }
         }
@@ -110,12 +130,22 @@ public class PlayerController : MonoBehaviour
             else
             {
                 gameObject.GetComponent<SpriteRenderer>().enabled = true;
-            }           
+            }
             elapsedTime += Time.deltaTime;
             flag++;
             yield return new WaitForSeconds(intervalTime);
         }
 
         gameObject.GetComponent<SpriteRenderer>().enabled = true;
+    }
+
+    IEnumerator Explosion()
+    {
+        yield return new WaitForSeconds(2);
+
+        GameObject gameController = GameObject.FindGameObjectWithTag("GameController");
+        _game = gameController.GetComponent<GameController>();
+        _game.UpdateHighscore();
+        SceneManager.LoadScene(startSceneName);
     }
 }

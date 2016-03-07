@@ -9,6 +9,8 @@ public class ShotScript : MonoBehaviour
     public float force;     // Force of shot
     public GameObject AsteroidSmallPrefab;  // Prefab of small Asteroid
     public GameObject AsteroidBigPrefab;    // Prefab of big Asteroid
+    public GameObject ExplosionBigPrefab;    // Prefab of big Explosion
+    public GameObject ExplosionSmallPrefab;    // Prefab of small Explosion
 
     GameController _game; //Reference to the GameController
 
@@ -39,7 +41,8 @@ public class ShotScript : MonoBehaviour
             a1.transform.position = collision.gameObject.transform.position;
             a2.transform.position = collision.gameObject.transform.position;
 
-            GetComponents<AudioSource>()[1].Play();
+            GameObject ex = GameObject.Instantiate(ExplosionBigPrefab) as GameObject;
+            ex.transform.position = collision.gameObject.transform.position;
             Destroy(gameObject);
             Destroy(collision.gameObject);
             _game.AddScore(50);
@@ -47,7 +50,8 @@ public class ShotScript : MonoBehaviour
 
         else if (collision.gameObject.CompareTag("asteroidSmall"))
         {
-            GetComponents<AudioSource>()[1].Play();
+            GameObject ex = GameObject.Instantiate(ExplosionSmallPrefab) as GameObject;
+            ex.transform.position = collision.gameObject.transform.position;
             Destroy(gameObject);
             Destroy(collision.gameObject);
             _game.AddScore(100);

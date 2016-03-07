@@ -41,10 +41,6 @@ public class GameController : MonoBehaviour
             _time++;
             minForce += 5;
             maxForce += 5;
-        }
-        if ((int)_time % 30 == 0)
-        {
-            _time++;
             asteroidCount++;
         }
     }

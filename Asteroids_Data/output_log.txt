@@ -14,28 +14,43 @@ Platform assembly: C:\Users\Sean\Documents\Unity\Asteroids\Asteroids_Data\Manage
 Loading C:\Users\Sean\Documents\Unity\Asteroids\Asteroids_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
 Platform assembly: C:\Users\Sean\Documents\Unity\Asteroids\Asteroids_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
 Loading C:\Users\Sean\Documents\Unity\Asteroids\Asteroids_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
-- Completed reload, in  0.232 seconds
+- Completed reload, in  0.068 seconds
 Platform assembly: C:\Users\Sean\Documents\Unity\Asteroids\Asteroids_Data\Managed\System.Core.dll (this message is harmless)
 Platform assembly: C:\Users\Sean\Documents\Unity\Asteroids\Asteroids_Data\Managed\System.dll (this message is harmless)
 <RI> Initializing input.
 XInput1_3.dll not found. Trying XInput9_1_0.dll instead...
 <RI> Input initialized.
-desktop: 1680x1050 60Hz; virtual: 3046x1050 at 0,0
+desktop: 1366x768 60Hz; virtual: 1366x768 at 0,0
 <RI> Initialized touch support.
-UnloadTime: 1.432176 ms
+UnloadTime: 1.037815 ms
 Setting up 1 worker threads for Enlighten.
-  Thread -> id: 3310 -> priority: 1 
+  Thread -> id: 18c8 -> priority: 1 
 Unloading 6 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 9.624310 ms
+NullReferenceException: Object reference not set to an instance of an object
+  at Teleport.OnBecameInvisible () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
-Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 246.
-Total: 0.370970 ms (FindLiveObjects: 0.055399 ms CreateObjectMapping: 0.018876 ms MarkObjects: 0.273714 ms  DeleteObjects: 0.021339 ms)
+UnloadTime: 22.842606 ms
+
+Unloading 9 unused Assets to reduce memory usage. Loaded Objects now: 367.
+Total: 0.350042 ms (FindLiveObjects: 0.059913 ms CreateObjectMapping: 0.025853 ms MarkObjects: 0.244988 ms  DeleteObjects: 0.017645 ms)
 
 Unloading 2 Unused Serialized files (Serialized files now loaded: 0)
-UnloadTime: 1.189240 ms
+NullReferenceException: Object reference not set to an instance of an object
+  at Teleport.OnBecameInvisible () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
-Unloading 6 unused Assets to reduce memory usage. Loaded Objects now: 258.
-Total: 0.552352 ms (FindLiveObjects: 0.059913 ms CreateObjectMapping: 0.036522 ms MarkObjects: 0.426370 ms  DeleteObjects: 0.027904 ms)
+NullReferenceException: Object reference not set to an instance of an object
+  at Teleport.OnBecameInvisible () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
+
+NullReferenceException: Object reference not set to an instance of an object
+  at Teleport.OnBecameInvisible () [0x00000] in <filename unknown>:0 
+ 
+(Filename:  Line: -1)
 
 NullReferenceException: Object reference not set to an instance of an object
   at Teleport.OnBecameInvisible () [0x00000] in <filename unknown>:0 
@@ -51,4 +66,9 @@ NullReferenceException: Object reference not set to an instance of an object
   at Teleport.OnBecameInvisible () [0x00000] in <filename unknown>:0 
  
 (Filename:  Line: -1)
+
+UnloadTime: 10.009643 ms
+
+Unloading 7 unused Assets to reduce memory usage. Loaded Objects now: 379.
+Total: 0.322137 ms (FindLiveObjects: 0.036522 ms CreateObjectMapping: 0.027084 ms MarkObjects: 0.240474 ms  DeleteObjects: 0.016824 ms)
 
